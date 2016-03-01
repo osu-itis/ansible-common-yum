@@ -13,6 +13,10 @@
     - lsof
     - tcpdump
 
+- name: upgrade CentOS via yum
+  yum: name=* state=latest update_cache=yes
+
+
 - name: remove awful packages
   yum: name={{item}} state=absent update_cache=yes
   with_items:
