@@ -1,4 +1,10 @@
 ---
+- name: upgrade CentOS via yum
+  yum: name=* state=latest update_cache=yes
+  register: output
+  debug: msg="{{ output.stdout }}"
+  debug: msg="{{ output.stderr }}"
+
 - name: install common packages
   yum: name={{item}} state=present update_cache=yes
   with_items:
@@ -12,10 +18,6 @@
     - vim-enhanced
     - lsof
     - tcpdump
-
-- name: upgrade CentOS via yum
-  yum: name=* state=latest update_cache=yes
-
 
 - name: remove awful packages
   yum: name={{item}} state=absent update_cache=yes
