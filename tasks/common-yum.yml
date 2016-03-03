@@ -1,5 +1,5 @@
 ---
-- name: upgrade CentOS via yum
+- name: upgrade yum
   yum: name=* state=latest update_cache=yes
   register: output
   debug: msg="{{ output.stdout }}"
