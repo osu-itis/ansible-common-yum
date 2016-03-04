@@ -2,8 +2,10 @@
 - name: upgrade yum
   yum: name=* state=latest update_cache=yes
   register: output
-  debug: msg="{{ output.stdout }}"
-  debug: msg="{{ output.stderr }}"
+
+- debug: msg="{{ output.stdout_lines }}"
+
+- debug: msg="{{ output.stderr_lines }}"
 
 - name: install common packages
   yum: name={{item}} state=present update_cache=yes
